@@ -12,7 +12,7 @@
 </template>
 
 <script>
-import { Group, Cell, XInput, XButton, XHeader, Alert } from 'vux'
+import { Group, Cell, XInput, XButton, XHeader, Alert, AlertModule } from 'vux'
 
 export default {
   components: {
@@ -25,7 +25,14 @@ export default {
   },
   methods: {
     login () {
-      this.$router.push('/')
+      if (this.password === '123456') {
+        this.$router.push('/')
+      } else {
+        AlertModule.show({
+          title: '登录失败',
+          content: '密码错误'
+        })
+      }
     }
   },
   data () {
