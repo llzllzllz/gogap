@@ -1,9 +1,9 @@
 <template>
   <div>
-    <x-header left-options="{showBack: true}">登录</x-header>
+    <x-header :left-options="{showBack: true}">登录</x-header>
     <group title="用户说明">
-    <x-input title="手机号码" mask="999 9999 9999" :max="13" is-type="china-mobile"></x-input>
-    <x-input title="密码" mask="99999999999" :max="13" type="password"></x-input>
+    <x-input title="手机号码" mask="999 9999 9999" :max="13" is-type="china-mobile" v-model="phone"></x-input>
+    <x-input title="密码" mask="99999999999" :max="13" v-model="password" type="password"></x-input>
     </group>
     <div class="btn">
     <x-button @click.native="login">登陆</x-button>
@@ -12,7 +12,7 @@
 </template>
 
 <script>
-import { Group, Cell, XInput, XButton, XHeader } from 'vux'
+import { Group, Cell, XInput, XButton, XHeader, Alert } from 'vux'
 
 export default {
   components: {
@@ -20,9 +20,9 @@ export default {
     Cell,
     XInput,
     XButton,
-    XHeader
+    XHeader,
+    Alert
   },
-  name: 'Home',
   methods: {
     login () {
       this.$router.push('/')
@@ -30,7 +30,9 @@ export default {
   },
   data () {
     return {
-      msg: 'Hello World!'
+      msg: 'Hello World!',
+      phone: '13995953370',
+      password: ''
     }
   }
 }
